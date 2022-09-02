@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetailActivity"
+    android:padding="10dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="40sp"
+        android:id="@+id/tvPlaceName"
+        android:text="PlaceName"
+        android:textStyle="bold"
+        android:textColor="@color/black"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.8dp"
+        android:layout_marginTop="3dp"
+        android:background="#AFAFAF"
+        android:id="@+id/line"
+        android:layout_below="@+id/tvPlaceName"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="240dp"
+        android:id="@+id/PlaceImg"
+        android:src="@drawable/pet"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rounded_corner_border"
+        android:layout_below="@+id/line"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:id="@+id/head"
+        android:layout_below="@id/PlaceImg">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvCity"
+            android:textSize="18sp"
+            android:text="city"
+            android:textColor="@color/teal_200"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvAddress"
+            android:textSize="18sp"
+            android:layout_marginLeft="10dp"
+            android:text="address"
+            android:textColor="@color/teal_200"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvPurpose"
+            android:textSize="18sp"
+            android:layout_marginLeft="10dp"
+            android:text="purpose"
+            android:textColor="@color/teal_200"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/head"
+        android:layout_marginTop="10dp"
+        android:padding="20dp"
+        android:text="place description"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:id="@+id/tvDesc" />
+
+</RelativeLayout>
