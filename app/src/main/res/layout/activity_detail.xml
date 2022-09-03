@@ -80,4 +80,14 @@
         android:textStyle="bold"
         android:id="@+id/tvDesc" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvDesc"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:id="@+id/deleteBtn"
+        android:text="삭제하기"
+        android:visibility="visible"/>
+
 </RelativeLayout>
