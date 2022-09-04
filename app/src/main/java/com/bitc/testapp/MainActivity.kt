@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
     class FragmentPagerAdapter(activity: FragmentActivity): FragmentStateAdapter(activity){
         val fragments: List<Fragment>
         init {
-            fragments = listOf(BasicFragment(), PetWalkFragment(), RunningFragment(), RidingFragment(), DriveFragment())
+            fragments = listOf(BasicFragment(), PetWalkFragment(), RunningFragment(), RidingFragment(), DriveFragment(), MapFragment())
         }
         override fun getItemCount(): Int {
             return fragments.size
@@ -66,6 +66,7 @@ class MainActivity : AppCompatActivity() {
                 2 -> tab.setText("러닝")
                 3 -> tab.setText("라이딩")
                 4 -> tab.setText("드라이브")
+                5 -> tab.setText("추천장소")
             }
         }.attach()
 
@@ -139,6 +140,7 @@ class MainActivity : AppCompatActivity() {
                 2 -> tab.setText("러닝")
                 3 -> tab.setText("라이딩")
                 4 -> tab.setText("드라이브")
+                5 -> tab.setText("추천장소")
             }
         }.attach()
 
