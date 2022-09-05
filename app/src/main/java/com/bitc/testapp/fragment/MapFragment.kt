@@ -35,7 +35,7 @@ class MapFragment : Fragment() {
         mMap.addMarker(MarkerOptions().position(basicMarker).title("베스트러닝코스")) //마크찍기
         mMap.moveCamera(CameraUpdateFactory.newLatLng(basicMarker)) //카메라 옮기기
         mMap.animateCamera(
-            CameraUpdateFactory.newLatLngZoom(basicMarker, 10.0f)
+            CameraUpdateFactory.newLatLngZoom(basicMarker, 11.0f)
         )
     }
 
