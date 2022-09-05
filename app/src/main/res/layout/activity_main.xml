@@ -58,8 +58,8 @@
             app:tabMode="auto"
             android:background="@color/skyblue1"
             app:tabIconTint="@color/skyblue2"
-            app:tabTextColor="@color/black"
-            app:tabSelectedTextColor="@color/black"
+            app:tabTextColor="@color/deepgrayblack"
+            app:tabSelectedTextColor="@color/deepgrayblack"
             app:tabIndicatorColor="@color/skyblue7"
             app:tabIndicatorHeight="8dp"
             app:title="Android 4team">
@@ -67,8 +67,7 @@
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="전체"
-                />
+                android:text="전체" />
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

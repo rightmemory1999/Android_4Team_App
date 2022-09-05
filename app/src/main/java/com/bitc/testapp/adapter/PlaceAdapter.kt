@@ -1,11 +1,15 @@
 package com.bitc.testapp.adapter
 
+import android.app.Application
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bitc.testapp.DetailActivity
+import com.bitc.testapp.MainActivity
 import com.bitc.testapp.databinding.ItemBinding
 import com.bitc.testapp.model.PlaceModel
 
