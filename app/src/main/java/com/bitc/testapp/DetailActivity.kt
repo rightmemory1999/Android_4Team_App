@@ -54,6 +54,7 @@ class DetailActivity : AppCompatActivity() {
                     finish()
                 }
 
+
                 binding.deleteBtn1.setOnClickListener {
                     val placeDeleteCall = networkService.delete(placeModel!!)
                     placeDeleteCall.enqueue(object : Callback<String>{
@@ -68,21 +69,13 @@ class DetailActivity : AppCompatActivity() {
                     finish()
                 }
 
-                binding.updateBtn.setOnClickListener{
-                    val placeUpdateCall = networkService.update(placeModel!!)
-                    placeUpdateCall.enqueue(object : Callback<String>{
-                        override fun onResponse(call: Call<String>, response: Response<String>) {
-                            Log.d("myLog", response.body().toString())
-                        }
 
-                        override fun onFailure(call: Call<String>, t: Throwable) {
-                            call.cancel()
-                        }
-                    })
-                    finish()
+                binding.listBtn.setOnClickListener {
+                    onBackPressed()
                 }
 
-                binding.listBtn.setOnClickListener{
+
+/*                binding.listBtn.setOnClickListener{
                     val placeListCall = networkService.list(placeModel!!)
                     placeListCall.enqueue(object : Callback<String>{
                         override fun onResponse(call: Call<String>, response: Response<String>) {
@@ -94,7 +87,7 @@ class DetailActivity : AppCompatActivity() {
                         }
                     })
                     finish()
-                }
+                }*/
 
 
             }
