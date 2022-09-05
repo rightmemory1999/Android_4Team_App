@@ -107,16 +107,6 @@
         android:layout_below="@+id/tvDesc"
         android:layout_alignParentRight="true"
         android:layout_marginRight="30dp"
-        android:id="@+id/deleteBtn1"
-        android:text="삭제하기"
-        android:visibility="visible"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tvDesc"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="30dp"
         android:id="@+id/deleteBtn"
         android:text="삭제하기"
         android:visibility="gone"/>

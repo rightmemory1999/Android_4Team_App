@@ -53,6 +53,10 @@ class DetailActivity : AppCompatActivity() {
                     })
                     finish()
                 }
+
+                binding.listBtn.setOnClickListener {
+                    onBackPressed()
+                }
             }
 
             override fun onFailure(call: Call<PlaceModel>, t: Throwable) {

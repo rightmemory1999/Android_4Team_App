@@ -1,12 +1,15 @@
 package com.bitc.testapp
 
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -117,8 +120,8 @@ class MainActivity : AppCompatActivity() {
         if(toggle.onOptionsItemSelected(item)){
             var item1 = findViewById<View>(R.id.drawerItem1)
             var item2 = findViewById<View>(R.id.drawerItem2)
-            var item3 = findViewById<View>(R.id.drawerItem3)
-            var item4 = findViewById<View>(R.id.drawerItem4)
+            var item3 = findViewById<View>(R.id.drawerLogout)
+            var item4 = findViewById<View>(R.id.drawerQuit)
             item1.setOnClickListener {
                 Toast.makeText(this, "item1 클릭", Toast.LENGTH_SHORT).show()
             }
@@ -126,10 +129,27 @@ class MainActivity : AppCompatActivity() {
 
             }
             item3.setOnClickListener {
-
+                TestApplication.auth.signOut()
+                TestApplication.email = null
+                Toast.makeText(this, "로그아웃 성공", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this, LoginActivity::class.java))
             }
             item4.setOnClickListener {
-
+                val builder = AlertDialog.Builder(this)
+                    .setTitle("탈퇴 확인")
+                    .setMessage("정말 탈퇴하시겠습니까?")
+                    .setCancelable(false)
+                    .setPositiveButton("네", DialogInterface.OnClickListener{dialogInterface, which ->
+                        TestApplication.auth.currentUser?.delete()
+                        TestApplication.auth.signOut()
+                        TestApplication.email = null
+                        Toast.makeText(this, "정상적으로 탈퇴했습니다.", Toast.LENGTH_SHORT).show()
+                        startActivity(Intent(this, LoginActivity::class.java))
+                    })
+                    .setNegativeButton("아니오", DialogInterface.OnClickListener{dialogInterface, which ->
+                        Log.d("myLog", "cancel")
+                    })
+                builder.show()
             }
         }
         return super.onOptionsItemSelected(item)
