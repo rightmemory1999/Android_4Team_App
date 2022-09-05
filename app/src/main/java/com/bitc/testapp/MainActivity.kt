@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.fragment.app.Fragment
@@ -115,7 +116,22 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if(toggle.onOptionsItemSelected(item)){
-            return true
+            var item1 = findViewById<View>(R.id.drawerItem1)
+            var item2 = findViewById<View>(R.id.drawerItem2)
+            var item3 = findViewById<View>(R.id.drawerItem3)
+            var item4 = findViewById<View>(R.id.drawerItem4)
+            item1.setOnClickListener {
+//                Toast.makeText(this, "item1 클릭", Toast.LENGTH_SHORT).show()
+            }
+            item2.setOnClickListener {
+
+            }
+            item3.setOnClickListener {
+
+            }
+            item4.setOnClickListener {
+
+            }
         }
         return super.onOptionsItemSelected(item)
     }

@@ -2,15 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:title="아이템1"
+        android:id="@+id/drawerItem1"
         android:icon="@android:drawable/ic_menu_share" />
     <item
         android:title="아이템2"
+        android:id="@+id/drawerItem2"
         android:icon="@android:drawable/ic_menu_help" />
     <item
         android:title="아이템3"
+        android:id="@+id/drawerItem3"
         android:icon="@android:drawable/ic_menu_search" />
     <item
         android:title="아이템4"
+        android:id="@+id/drawerItem4"
         android:icon="@android:drawable/ic_menu_add" />
 
 </menu>
