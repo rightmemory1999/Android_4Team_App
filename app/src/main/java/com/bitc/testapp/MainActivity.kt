@@ -38,7 +38,6 @@ class MainActivity : AppCompatActivity() {
         override fun createFragment(position: Int): Fragment {
             return fragments[position]
         }
-
     }
 
     override fun onBackPressed() {
@@ -121,7 +120,7 @@ class MainActivity : AppCompatActivity() {
             var item3 = findViewById<View>(R.id.drawerItem3)
             var item4 = findViewById<View>(R.id.drawerItem4)
             item1.setOnClickListener {
-//                Toast.makeText(this, "item1 클릭", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "item1 클릭", Toast.LENGTH_SHORT).show()
             }
             item2.setOnClickListener {
 
