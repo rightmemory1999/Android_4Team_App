@@ -13,6 +13,7 @@ import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.GoogleAuthProvider
 
 class LoginActivity : AppCompatActivity() {
+
     lateinit var binding: ActivityLoginBinding
     var backPressedTime: Long = 0
 

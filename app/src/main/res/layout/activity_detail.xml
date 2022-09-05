@@ -34,39 +34,39 @@
         android:layout_below="@+id/line"/>
 
     <LinearLayout
+        android:id="@+id/head"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_below="@id/PlaceImg"
         android:layout_marginTop="10dp"
-        android:padding="10dp"
-        android:id="@+id/head"
-        android:layout_below="@id/PlaceImg">
+        android:orientation="horizontal"
+        android:padding="10dp">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/tvCity"
-            android:textSize="18sp"
-            android:text="city"
-            android:textColor="@color/teal_200"/>
-
-        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="city"
+            android:textColor="@color/teal_200"
+            android:textSize="18sp" />
+
+        <TextView
             android:id="@+id/tvAddress"
-            android:textSize="18sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:text="address"
-            android:textColor="@color/teal_200"/>
+            android:textColor="@color/teal_200"
+            android:textSize="18sp" />
 
         <TextView
+            android:id="@+id/tvPurpose"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tvPurpose"
-            android:textSize="18sp"
             android:layout_marginLeft="10dp"
             android:text="purpose"
-            android:textColor="@color/teal_200"/>
+            android:textColor="@color/teal_200"
+            android:textSize="18sp" />
     </LinearLayout>
 
     <TextView
@@ -81,13 +81,44 @@
         android:id="@+id/tvDesc" />
 
     <Button
-        android:id="@+id/deleteBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvDesc"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="30dp"
+        android:id="@+id/listBtn"
+        android:text="목록"
+        android:visibility="visible"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvDesc"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:id="@+id/updateBtn"
+        android:text="수정하기"
+        android:visibility="visible"/>
+
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvDesc"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="20dp"
+        android:layout_marginRight="30dp"
+        android:id="@+id/deleteBtn1"
         android:text="삭제하기"
-        android:visibility="gone" />
+        android:visibility="visible"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvDesc"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="30dp"
+        android:id="@+id/deleteBtn"
+        android:text="삭제하기"
+        android:visibility="gone"/>
 
 </RelativeLayout>
