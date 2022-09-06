@@ -9,6 +9,8 @@
     <string name="drawer_open">DRAWER OPEN</string>
     <string name="drawer_close">DRAWER CLOSE</string>
 
+    <string name="title_activity_maps">MapsActivity</string>
+
     <!-- Sign In -->
     <!--    <string name="email">Email</string>-->
     <!--    <string name="password">Password</string>-->

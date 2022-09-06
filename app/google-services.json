@@ -1,41 +1,41 @@
 {
   "project_info": {
-    "project_number": "309465651739",
-    "project_id": "testapp-72db5",
-    "storage_bucket": "testapp-72db5.appspot.com"
+    "project_number": "1035553999941",
+    "project_id": "androidproject-test-e9029",
+    "storage_bucket": "androidproject-test-e9029.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:309465651739:android:c855f663b5826fc3ceb6be",
+        "mobilesdk_app_id": "1:1035553999941:android:2b1aefaa1ea076904da72c",
         "android_client_info": {
           "package_name": "com.bitc.testapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "309465651739-u50gaenq7qbmbpgsbeauv117op7o93pb.apps.googleusercontent.com",
+          "client_id": "1035553999941-kt9uo6aucj24r6pf8931hljd2kc64s7i.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.bitc.testapp",
-            "certificate_hash": "9cc7b3b603dda636c8a101e8cea8242babd6cf72"
+            "certificate_hash": "f636fd4980bbd37544e75b842c1db8c22707f36f"
           }
         },
         {
-          "client_id": "309465651739-39a5tgqftok1botb573r984vb6u4m3pm.apps.googleusercontent.com",
+          "client_id": "1035553999941-jokahe390euudorgqi9ju8ptn8cg0nap.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD_KqK1573ocmCoWXzPGE08bV-04O9gAUc"
+          "current_key": "AIzaSyCCmXIM1ywArjRORB5AZ_IbQJqKlIkjU2w"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "309465651739-39a5tgqftok1botb573r984vb6u4m3pm.apps.googleusercontent.com",
+              "client_id": "1035553999941-jokahe390euudorgqi9ju8ptn8cg0nap.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

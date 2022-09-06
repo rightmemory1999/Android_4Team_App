@@ -78,6 +78,11 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.fabForRecPlace.setOnClickListener {
+            val intent_recPlace = Intent(this, RecommendActivity::class.java)
+            startActivity(intent_recPlace)
+        }
+
 //        val networkService = (applicationContext as TestApplication).networkService
 //        val networkService = TestApplication.networkService
 //        val userListModelCall = networkService.doGetUserList()
@@ -182,6 +187,11 @@ class MainActivity : AppCompatActivity() {
         binding.fab.setOnClickListener {
             val intent = Intent(this, InputActivity::class.java)
             startActivity(intent)
+        }
+
+        binding.fabForRecPlace.setOnClickListener {
+            val intent_recPlace = Intent(this, RecommendActivity::class.java)
+            startActivity(intent_recPlace)
         }
     }
 }

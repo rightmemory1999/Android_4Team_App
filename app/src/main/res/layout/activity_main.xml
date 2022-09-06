@@ -82,7 +82,18 @@
             app:icon="@android:drawable/ic_input_add"
             android:text="My Place"
             android:layout_gravity="right"
-            android:layout_margin="10dp"/>
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="500dp"/>
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/fabForRecPlace"
+            app:icon="@android:drawable/ic_menu_help"
+            android:text="recommend"
+            android:layout_gravity="right"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="560dp"/>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
