@@ -9,12 +9,16 @@
         android:id="@+id/drawerItem2"
         android:icon="@android:drawable/ic_menu_help" />
     <item
+        android:title="장소 찾아보기"
+        android:id="@+id/drawerSearch"
+        android:icon="@android:drawable/ic_menu_search" />
+    <item
         android:title="로그아웃"
         android:id="@+id/drawerLogout"
-        android:icon="@android:drawable/ic_menu_search" />
+        android:icon="@android:drawable/ic_lock_power_off" />
     <item
         android:title="회원탈퇴"
         android:id="@+id/drawerQuit"
-        android:icon="@android:drawable/ic_menu_add" />
+        android:icon="@android:drawable/ic_delete" />
 
 </menu>

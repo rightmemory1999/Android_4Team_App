@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
@@ -32,7 +33,7 @@ class MainActivity : AppCompatActivity() {
     class FragmentPagerAdapter(activity: FragmentActivity): FragmentStateAdapter(activity){
         val fragments: List<Fragment>
         init {
-            fragments = listOf(BasicFragment(), PetWalkFragment(), RunningFragment(), RidingFragment(), DriveFragment(), MapFragment())
+            fragments = listOf(WalkFragment(), PetWalkFragment(), RunningFragment(), RidingFragment(), DriveFragment(), MapFragment())
         }
         override fun getItemCount(): Int {
             return fragments.size
@@ -125,8 +126,9 @@ class MainActivity : AppCompatActivity() {
         if(toggle.onOptionsItemSelected(item)){
             var item1 = findViewById<View>(R.id.drawerItem1)
             var item2 = findViewById<View>(R.id.drawerItem2)
-            var item3 = findViewById<View>(R.id.drawerLogout)
-            var item4 = findViewById<View>(R.id.drawerQuit)
+            var item3 = findViewById<View>(R.id.drawerSearch)
+            var item4 = findViewById<View>(R.id.drawerLogout)
+            var item5 = findViewById<View>(R.id.drawerQuit)
             item1.setOnClickListener {
                 Toast.makeText(this, "item1 클릭", Toast.LENGTH_SHORT).show()
             }
@@ -134,12 +136,15 @@ class MainActivity : AppCompatActivity() {
 
             }
             item3.setOnClickListener {
+                startActivity(Intent(this, SearchActivity::class.java))
+            }
+            item4.setOnClickListener {
                 TestApplication.auth.signOut()
                 TestApplication.email = null
                 Toast.makeText(this, "로그아웃 성공", Toast.LENGTH_SHORT).show()
                 startActivity(Intent(this, LoginActivity::class.java))
             }
-            item4.setOnClickListener {
+            item5.setOnClickListener {
                 val builder = AlertDialog.Builder(this)
                     .setTitle("탈퇴 확인")
                     .setMessage("정말 탈퇴하시겠습니까?")

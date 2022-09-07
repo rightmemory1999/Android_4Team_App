@@ -50,11 +50,11 @@ class RecommendActivity : AppCompatActivity(), OnMapReadyCallback {
 
         if(ContextCompat.checkSelfPermission(
                 this,
-            "android.permissioni.ACCESS_FINE_LOCATION")==PackageManager.PERMISSION_GRANTED
+            "android.permission.ACCESS_FINE_LOCATION")==PackageManager.PERMISSION_GRANTED
         ){
             Log.d("myLog", "granted..")
         } else {
-            permissionLauncher.launch("android.permissioni.ACCESS_FINE_LOCATION")
+            permissionLauncher.launch("android.permission.ACCESS_FINE_LOCATION")
         }
 
         val mapFragment = supportFragmentManager
@@ -65,7 +65,7 @@ class RecommendActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
-        val title = arrayOf("을숙도산책로", "추천라이딩코스", "반려견과여기로", "베스트러닝코스")
+        val title = arrayOf("을숙도산책로", "대저 자전거 라이딩", "댕댕이가 좋아하는 공원", "이기대 러닝코스")
         val latitudes = arrayOf(35.0995441147, 35.120355462733, 35.20154247887, 35.22500769737)
         val longitudes = arrayOf(128.93991106, 129.11201397379, 129.10588031253, 128.98331920464)
 
@@ -92,7 +92,7 @@ class RecommendActivity : AppCompatActivity(), OnMapReadyCallback {
                 val currentLng = p0.longitude
                 mMap.clear()
 
-                val title = arrayOf("을숙도산책로", "추천라이딩코스", "반려견과여기로", "베스트러닝코스")
+                val title = arrayOf("을숙도산책로", "대저 자전거 라이딩", "댕댕이가 좋아하는 공원", "이기대 러닝코스")
                 val latitudes = arrayOf(35.0995441147, 35.120355462733, 35.20154247887, 35.22500769737)
                 val longitudes = arrayOf(128.93991106, 129.11201397379, 129.10588031253, 128.98331920464)
 
