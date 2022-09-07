@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.EditText
 import android.widget.Toast
 import com.bitc.testapp.databinding.ActivityDetailBinding
 import com.bitc.testapp.model.PlaceModel
@@ -15,6 +16,8 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class DetailActivity : AppCompatActivity() {
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityDetailBinding.inflate(layoutInflater)
@@ -26,6 +29,9 @@ class DetailActivity : AppCompatActivity() {
 //        val networkService = (applicationContext as TestApplication).networkService
 
         val placeModelCall = networkService.getPlace(id)
+
+
+
         placeModelCall.enqueue(object : Callback<PlaceModel> {
             override fun onResponse(call: Call<PlaceModel>, response: Response<PlaceModel>) {
                 val placeModel = response.body()
@@ -75,6 +81,8 @@ class DetailActivity : AppCompatActivity() {
                 binding.listBtn.setOnClickListener {
                     onBackPressed()
                 }
+
+
 
 
 /*                binding.listBtn.setOnClickListener{

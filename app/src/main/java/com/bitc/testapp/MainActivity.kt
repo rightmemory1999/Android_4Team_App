@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Button
+import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.fragment.app.Fragment
@@ -24,6 +26,7 @@ import retrofit2.Response
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
     lateinit var toggle: ActionBarDrawerToggle
+
 
     class FragmentPagerAdapter(activity: FragmentActivity): FragmentStateAdapter(activity){
         val fragments: List<Fragment>
@@ -69,10 +72,6 @@ class MainActivity : AppCompatActivity() {
             }
         }.attach()
 
-        binding.fab.setOnClickListener {
-            val intent = Intent(this, InputActivity::class.java)
-            startActivity(intent)
-        }
 
 //        val networkService = (applicationContext as TestApplication).networkService
 //        val networkService = TestApplication.networkService
