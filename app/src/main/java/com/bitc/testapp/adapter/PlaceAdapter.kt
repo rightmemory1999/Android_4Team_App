@@ -1,15 +1,11 @@
 package com.bitc.testapp.adapter
 
-import android.app.Application
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bitc.testapp.DetailActivity
-import com.bitc.testapp.MainActivity
 import com.bitc.testapp.databinding.ItemBinding
 import com.bitc.testapp.model.PlaceModel
 
@@ -18,6 +14,7 @@ class PlaceViewHolder(val binding: ItemBinding): RecyclerView.ViewHolder(binding
 class PlaceAdapter(
     val context: Context, val places: MutableList<PlaceModel>?):
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return PlaceViewHolder(
             ItemBinding.inflate(

@@ -7,4 +7,40 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="gray">#70FFFFFF</color>
+    <color name="darkgray">#70777777</color>
+    <color name="deepdarkgray">#70595959</color>
+    <color name="deepdeepdarkgray">#702B2A2A</color>
+    <color name="grayblack">#701B1B1B</color>
+    <color name="deepgrayblack">#70121212</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="skyblue1">#E0F3F2</color>
+    <color name="skyblue2">#BCE2EC</color>
+    <color name="skyblue3">#DEF8F6</color>
+    <color name="skyblue4">#60D2EF</color>
+    <color name="skyblue5">#D1F4FD</color>
+    <color name="skyblue6">#C1E0E8</color>
+    <color name="skyblue7">#A6D5E1</color>
+
+    <!--Opacity-->
+
+    <color name="o5">#0D000000</color>
+    <color name="o10">#1A000000</color>
+    <color name="o15">#26000000</color>
+    <color name="o20">#33000000</color>
+    <color name="o25">#40000000</color>
+    <color name="o30">#4D000000</color>
+    <color name="o35">#59000000</color>
+    <color name="o40">#66000000</color>
+    <color name="o45">#73000000</color>
+    <color name="o50">#80000000</color>
+    <color name="o55">#8C000000</color>
+    <color name="o60">#99000000</color>
+    <color name="o65">#A6000000</color>
+    <color name="o70">#B3000000</color>
+    <color name="o75">#BF000000</color>
+    <color name="o80">#CC000000</color>
+    <color name="o85">#D9000000</color>
+    <color name="o90">#E6000000</color>
+    <color name="o95">#F2000000</color>
 </resources>
