@@ -11,8 +11,8 @@ import com.bitc.testapp.R;
 
 public class commentviewholder extends RecyclerView.ViewHolder {
 
-    ImageView cuimage;
-    TextView cuname,cumessage,cudt;
+    public ImageView cuimage;
+    public TextView cuname,cumessage,cudt;
 
     public commentviewholder(@NonNull View itView){
         super(itView);

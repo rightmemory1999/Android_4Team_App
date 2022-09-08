@@ -3,6 +3,7 @@ package com.bitc.testapp;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -14,6 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bitc.testapp.holder.commentviewholder;
 import com.bitc.testapp.model.commentmodel;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -124,28 +127,32 @@ public class comment extends AppCompatActivity {
     protected  void onStart() {
         super.onStart();
 
-        FirebaseRecyclerOptions<commentmodel> options = new FirebaseRecyclerOptions.Builder<commentmodel>().setQuery(commentref,commentmodel.class).build();
+        FirebaseRecyclerOptions<commentmodel> options = new FirebaseRecyclerOptions.Builder<commentmodel>().setQuery(commentref, commentmodel.class).build();
 
-        firebaseRecyclerAdapter <commentmodel, commentviewholder>firebaseRecyclerAdapter= new firebaseRecyclerAdapter<commentmodel,commentviewholder>(options) {
+        FirebaseRecyclerAdapter<commentmodel, commentviewholder> firebaseRecyclerAdapter = new
+                FirebaseRecyclerAdapter<commentmodel, commentviewholder>(options) {
 
-            @Override
-            protected void onBindViewHolder(@NonNull commentviewholder holder, int position, @NonNull commentmodel model) {
-                holder.cuname.setText(model.getUsername());
-                holder.cumessage.setText(model.getUsermsg());
-                holder.cudt.setText("Date :" + model.getDate() + "Time :" + model.getTime());
+                    @NonNull
+                    @Override
+                    public commentviewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.realtime, parent, false);
+                        return new commentviewholder(view);
+                    }
 
-            }
+                    @Override
+                    protected void onBindViewHolder(@NonNull commentviewholder holder, int position, @NonNull commentmodel model) {
+                        holder.cuname.setText(model.getUsername());
+                        holder.cumessage.setText(model.getUsermsg());
+                        holder.cudt.setText("Date :" + model.getDate() + "Time :" + model.getTime());
 
-            @NonNull
-            @Override
-            public commentviewholder onCreateViewHolder(@NonNull viewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.realtime, parent, false);
-                return new commentviewholder(view);
-            }
-        firebaseRecyclerAdapter.startListening();
-        recview.setAdapter(firebaseRecyclerAdapter);
+                    }
 
-    };
+
+                };
+
+            firebaseRecyclerAdapter.startListening();
+            recview.setAdapter(firebaseRecyclerAdapter);
+    }
 
 
 
