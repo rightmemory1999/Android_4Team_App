@@ -19,37 +19,37 @@
             android:id="@+id/cuimage"/>
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:id="@+id/cuname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/cuimage"
             android:text="User Name"
-            android:textStyle="bold"
+            android:textColor="#000000"
             android:textSize="25dp"
-            android:textColor="#000000"
-            android:layout_toRightOf="@+id/cuimage"
-            android:layout_marginLeft="10dp"/>
+            android:textStyle="bold" />
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:id="@+id/cumessage"
-            android:text="This is Message"
-            android:textSize="25sp"
-            android:textColor="#000000"
-            android:layout_toRightOf="@+id/cuimage"
-            android:layout_below="@+id/cuname"
-            android:layout_marginLeft="10dp"/>
-
-        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/cudt"
-            android:text="Date and Time"
-            android:textSize="15sp"
-            android:textColor="#000000"
+            android:layout_below="@+id/cuname"
+            android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/cuimage"
+            android:text="This is Message"
+            android:textColor="#000000"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/cudt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/cumessage"
-            android:layout_marginLeft="10dp"/>
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/cuimage"
+            android:text="Date and Time"
+            android:textColor="#000000"
+            android:textSize="15sp" />
 
     </RelativeLayout>
 

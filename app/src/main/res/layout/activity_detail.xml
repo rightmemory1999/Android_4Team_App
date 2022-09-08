@@ -138,43 +138,41 @@
             android:visibility="gone" />
 
 
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_alignParentBottom="true">
-
-
-
-        <EditText
-            android:id="@+id/comment_text"
-            android:layout_width="274dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="댓글을 입력하세요"
-            android:inputType="textPersonName" />
-
-        <Button
-            android:id="@+id/comment_submit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Button" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/comment_recview"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="25dp"
-            android:scrollbars="vertical" />
-    </LinearLayout>
+            android:orientation="horizontal">
+
+
+            <EditText
+                android:id="@+id/comment_text"
+                android:layout_width="274dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="댓글을 입력하세요"
+                android:inputType="textPersonName" />
+
+            <Button
+                android:id="@+id/comment_submit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Button" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/comment_recview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="25dp"
+                android:scrollbars="vertical" />
+        </LinearLayout>
     </RelativeLayout>
 </RelativeLayout>

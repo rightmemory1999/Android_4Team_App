@@ -24,7 +24,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.ktx.Firebase;
+
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -56,48 +56,48 @@ public class comment extends AppCompatActivity {
         recview =(RecyclerView)findViewById(R.id.comment_recview);
         recview.setLayoutManager(new LinearLayoutManager(this));
 
-            commentsubmit.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    userref.child(userId).addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            if(snapshot.exists()){
-                                String username=snapshot.child("uname").getValue().toString();
-                                String uimage=snapshot.child("uname").getValue().toString();
-                            }
+        commentsubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                userref.child(userId).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if(snapshot.exists()){
+                            String username=snapshot.child("uname").getValue().toString();
+                            String uimage=snapshot.child("uname").getValue().toString();
                         }
+                    }
 
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
 
-                        }
-                    });
-                }
+                    }
+                });
+            }
 
-                private void processcomment(String username, String uimage){
+            private void processcomment(String username, String uimage){
 
-                    String commentpost = commenttext.getText().toString();
-                    String randompostkey=userId+""+new Random().nextInt(1000);
+                String commentpost = commenttext.getText().toString();
+                String randompostkey= userId+""+new Random().nextInt(1000);
 
-                    Calendar datevalue = Calendar.getInstance();
-                    SimpleDateFormat dateFormat = new SimpleDateFormat("dd-mm--yy");
-                    String cdate = dateFormat.format(datevalue.getTime());
+                Calendar datevalue = Calendar.getInstance();
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd-mm--yy");
+                String cdate = dateFormat.format(datevalue.getTime());
 
-                    SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
-                    String ctime = timeFormat.format(datevalue.getTime());
+                SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
+                String ctime = timeFormat.format(datevalue.getTime());
 
-                    HashMap cmnt = new HashMap();
-                    cmnt.put("uid",userId);
-                    cmnt.put("username", username);
-                    cmnt.put("userimage",uimage);
-                    cmnt.put("usermsg",commentpost);
-                    cmnt.put("date",cdate);
-                    cmnt.put("time",ctime);
+                HashMap cmnt = new HashMap();
+                cmnt.put("uid",userId);
+                cmnt.put("username", username);
+                cmnt.put("userimage",uimage);
+                cmnt.put("usermsg",commentpost);
+                cmnt.put("date",cdate);
+                cmnt.put("time",ctime);
 
-                    commentref.child(randompostkey).updateChildren(cmnt)
-                            .addOnCompleteListener(new OnCompleteListener(){
+                commentref.child(randompostkey).updateChildren(cmnt)
+                    .addOnCompleteListener(new OnCompleteListener(){
                         @Override
                         public void onComplete(@NonNull Task task){
                             if(task.isSuccessful())
@@ -114,39 +114,39 @@ public class comment extends AppCompatActivity {
                         }
                     });
 
-                }
+            }
 
 
-            });
+        });
     }
 
     @Override
     protected  void onStart() {
         super.onStart();
 
-        FirebaseRecyclerOptions<commentmodel> options =
-                new FirebaseRecyclerOptions.Builder<commentmodel>().setQuery(commentref,commentmodel.class).build();
+        FirebaseRecyclerOptions<commentmodel> options = new FirebaseRecyclerOptions.Builder<commentmodel>().setQuery(commentref,commentmodel.class).build();
 
-        FirebaseRecyclerAdpter<commentmodel, commentviewholder>firebaseRecyclerAdpter= new FirebaseRecyclerAdpter<commentmodel,commentviewholder>(options);
+        firebaseRecyclerAdapter <commentmodel, commentviewholder>firebaseRecyclerAdapter= new firebaseRecyclerAdapter<commentmodel,commentviewholder>(options) {
 
-                @Override
-                protected void onBindViewHolder(@NonNull commentviewholder holder, int position, @NonNull commentmodel model, @NonNull commentviewholder holder){
-                    holder.cuname.setText(model.getUsername());
-                    holder.cumessage.setText(model.getUsermsg());
-                    holder.cudt.setText("Date :"+model.getDate()+"Time :"+model.getTime());
-                    Gilde.with(holder.cuimage.getContext()).load(model.getUserimage()).into(holder.cuimage);
+            @Override
+            protected void onBindViewHolder(@NonNull commentviewholder holder, int position, @NonNull commentmodel model) {
+                holder.cuname.setText(model.getUsername());
+                holder.cumessage.setText(model.getUsermsg());
+                holder.cudt.setText("Date :" + model.getDate() + "Time :" + model.getTime());
 
-        }
+            }
 
-        @NonNull
-        @Override
-        public commentviewholder onCreateViewHolder(@NonNull viewGroup parent, int viewType){
-           View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.comment_single_row,parent,false);
-           return new commentviewholder(view);
-        }
+            @NonNull
+            @Override
+            public commentviewholder onCreateViewHolder(@NonNull viewGroup parent, int viewType) {
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.realtime, parent, false);
+                return new commentviewholder(view);
+            }
+        firebaseRecyclerAdapter.startListening();
+        recview.setAdapter(firebaseRecyclerAdapter);
+
     };
 
-    firebaseRecyclerAdapter.startListening();
-    recview.setAdapter(firebaseRecyclerAdapter);
+
 
 }
