@@ -15,14 +15,16 @@ import com.bitc.testapp.model.PlaceModel
 class FilteredPlaceViewHolder(val binding: ItemBinding): RecyclerView.ViewHolder(binding.root)
 
 class SearchAdapter(
-    val context: Context, val places: ArrayList<PlaceModel>
+    val context: Context, val places: MutableList<PlaceModel>?
     ): RecyclerView.Adapter<RecyclerView.ViewHolder>(), Filterable {
 
     var filteredPlaces = ArrayList<PlaceModel>()
     var placeFilter = PlaceFilter()
 
     init {
-        filteredPlaces.addAll(places)
+        if (places != null) {
+            filteredPlaces.addAll(places)
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -36,8 +38,8 @@ class SearchAdapter(
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val binding = (holder as PlaceViewHolder).binding
-        val place = places!![position]
+        val binding = (holder as FilteredPlaceViewHolder).binding
+        val place = filteredPlaces[position]
         binding.tvPlaceName.text = place.placeName
         binding.tvCity.text = "#${place.city} "
         binding.tvPurpose.text = "#${place.purpose}"
@@ -55,7 +57,7 @@ class SearchAdapter(
     }
 
     override fun getItemCount(): Int {
-        return places.size
+        return filteredPlaces.size
     }
 
     override fun getFilter(): Filter {
@@ -63,33 +65,38 @@ class SearchAdapter(
     }
 
     inner class PlaceFilter : Filter() {
-        override fun performFiltering(charSequence: CharSequence?): FilterResults {
+        override fun performFiltering(charSequence: CharSequence): FilterResults {
             val filterString = charSequence.toString()
             val results = FilterResults()
 
             val filteredList: ArrayList<PlaceModel> = ArrayList<PlaceModel>()
 
-            if(filterString.trim { it <= ' ' }.isEmpty()){
+            if(filterString.trim(' ').isEmpty()){
                 results.values = places
+                results.count = places!!.size
 
                 return results
-            } else if (places != null && filterString.trim{ it <= ' ' }.length <= 2) {
-                for(place in places){
-                    if(place.placeName.contains(filterString)){
-                        filteredList.add(place)
-                    }
-                }
-                results.values = filteredList
-            } else {
-                if(places != null){
+
+            } else if (filterString.trim{ it <= ' ' }.length <= 2) {
+                if (places != null) {
                     for(place in places){
                         if(place.placeName.contains(filterString)){
                             filteredList.add(place)
                         }
                     }
                 }
-                results.values = filteredList
+
+            } else {
+                if (places != null) {
+                    for(place in places){
+                        if(place.placeName.contains(filterString)){
+                            filteredList.add(place)
+                        }
+                    }
+                }
             }
+            results.values = filteredList
+            results.count = filteredList.size
             return results
         }
 
