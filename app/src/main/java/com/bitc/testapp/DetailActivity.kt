@@ -42,10 +42,7 @@ class DetailActivity : AppCompatActivity() {
                 binding.tvPurpose.text = "#${placeModel?.purpose} "
                 binding.tvDesc.text = "${placeModel?.description}"
 
-
-
                 Log.d("myLog", "${placeModel?.username}")
-
 
                 // 로그인 한 이메일 관리자 계정(여기서는 rightmemory@naver.com으로 설정)인 경우에만.. 게시물 상세 페이지에서 삭제 버튼 표시됨!
                 // OR 조건으로 다른 계정도 추가 가능할 듯
@@ -67,9 +64,9 @@ class DetailActivity : AppCompatActivity() {
                     finish()
                 }
 
-
                 if (TestApplication.email == placeModel?.username) {
-                    binding.deleteBtn.visibility = View.VISIBLE
+                    binding.deleteBtn1.visibility = View.VISIBLE
+                    binding.updateBtn.visibility = View.VISIBLE
                 }
 
                 binding.deleteBtn1.setOnClickListener {
@@ -86,19 +83,9 @@ class DetailActivity : AppCompatActivity() {
                     finish()
                 }
 
-
                 binding.listBtn.setOnClickListener {
                     onBackPressed()
                 }
-
-
-                if (TestApplication.email == placeModel?.username) {
-                    binding.updateBtn.visibility = View.VISIBLE
-                }
-
-
-
-
 
 /*                binding.listBtn.setOnClickListener{
                     val placeListCall = networkService.list(placeModel!!)
@@ -113,8 +100,6 @@ class DetailActivity : AppCompatActivity() {
                     })
                     finish()
                 }*/
-
-
             }
 
             override fun onFailure(call: Call<PlaceModel>, t: Throwable) {
