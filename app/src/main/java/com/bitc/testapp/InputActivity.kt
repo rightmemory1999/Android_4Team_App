@@ -13,28 +13,34 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class InputActivity : AppCompatActivity() {
+    lateinit var binding:ActivityInputBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = ActivityInputBinding.inflate(layoutInflater)
+        binding = ActivityInputBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        var radioResult: String
+/*        binding.etPlaceName.setText(
+         TestApplication.email.toString())*/
 
+
+        var radioResult: String
         binding.saveBtn.setOnClickListener {
-            if (binding.walk.isChecked){
+            if (binding.walk.isChecked) {
                 radioResult = binding.walk.text.toString()
-            }else if(binding.withPet.isChecked){
+            } else if (binding.withPet.isChecked) {
                 radioResult = binding.withPet.text.toString()
-            }else if(binding.running.isChecked){
+            } else if (binding.running.isChecked) {
                 radioResult = binding.running.text.toString()
-            }else if(binding.riding.isChecked){
+            } else if (binding.riding.isChecked) {
                 radioResult = binding.riding.text.toString()
-            }else{
+            } else {
                 radioResult = binding.drive.text.toString()
             }
+            Log.d("myLog", "${TestApplication.email}+확인")
 
             var placeModel = PlaceModel(
                 id = 0,
+                username = TestApplication.email.toString(),
                 placeName = binding.etPlaceName.text.toString(),
                 purpose = radioResult,
                 city = binding.etCity.text.toString(),
@@ -43,7 +49,7 @@ class InputActivity : AppCompatActivity() {
             )
             val networkService = TestApplication.networkService
             val placeInsertCall = networkService.insert(placeModel)
-            placeInsertCall.enqueue(object : Callback<String>{
+            placeInsertCall.enqueue(object : Callback<String> {
                 override fun onResponse(call: Call<String>, response: Response<String>) {
                     Log.d("myLog", response.body().toString())
                 }
@@ -54,32 +60,6 @@ class InputActivity : AppCompatActivity() {
             })
             finish()
         }
-
-//        binding.saveBtn.setOnClickListener {
-//            var userModel = UserModel(
-//                id = 0,
-//                username = binding.etUsername.text.toString(),
-//                name = binding.etName.text.toString(),
-//                password = binding.etPassword.text.toString(),
-//                tel = binding.etTel.text.toString(),
-//                roles = binding.etRole.text.toString()
-//            )
-//            val networkService = (applicationContext as TestApplication).networkService
-//            val userInsertCall = networkService.insert(userModel)
-//            userInsertCall.enqueue(object : Callback<String>{
-//                override fun onResponse(call: Call<String>, response: Response<String>) {
-//                    Log.d("myLog", response.body().toString())
-//                }
-//
-//                override fun onFailure(call: Call<String>, t: Throwable) {
-//                    call.cancel()
-//                }
-//            })
-//            finish()
-//        }
-
-        binding.cancelBtn.setOnClickListener {
-            onBackPressed()
-        }
     }
 }
+

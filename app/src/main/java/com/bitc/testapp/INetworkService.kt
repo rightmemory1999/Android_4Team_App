@@ -24,7 +24,7 @@ interface INetworkService {
     @POST("insert")
     fun insert(@Body place: PlaceModel): Call<String>
 
-    //장소 삭제
+    //장소 삭제 + delete, put은 그대로 @delete, @put은 그대로 써도 됨
     @POST("delete")
     fun delete(@Body place: PlaceModel): Call<String>
 

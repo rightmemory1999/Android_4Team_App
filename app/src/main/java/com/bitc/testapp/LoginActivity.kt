@@ -79,8 +79,8 @@ class LoginActivity : AppCompatActivity() {
 
             TestApplication.auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this){task ->
-                    binding.authEmailEditView.text.clear()
-                    binding.authPasswordEditView.text.clear()
+                    binding.authEmailEditView.text?.clear()
+                    binding.authPasswordEditView.text?.clear()
                     if(task.isSuccessful){
                         TestApplication.auth.currentUser?.sendEmailVerification()
                             ?.addOnCompleteListener{ sendTask ->
@@ -112,8 +112,8 @@ class LoginActivity : AppCompatActivity() {
 
             TestApplication.auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this){ task ->
-                    binding.authEmailEditView.text.clear()
-                    binding.authPasswordEditView.text.clear()
+                    binding.authEmailEditView.text?.clear()
+                    binding.authPasswordEditView.text?.clear()
                     if(task.isSuccessful){
                         if(TestApplication.checkAuth()){
                             TestApplication.email = email
