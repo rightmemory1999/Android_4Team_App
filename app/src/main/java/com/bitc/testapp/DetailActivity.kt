@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.EditText
 import android.widget.Toast
 import com.bitc.testapp.databinding.ActivityDetailBinding
 import com.bitc.testapp.model.PlaceListModel
@@ -33,12 +34,12 @@ class DetailActivity : AppCompatActivity() {
         val placeModelCall = networkService.getPlace(id)
         placeModelCall.enqueue(object : Callback<PlaceModel> {
             override fun onResponse(call: Call<PlaceModel>, response: Response<PlaceModel>) {
-                val placeModel= response.body()
+                val placeModel = response.body()
                 binding.tvPlaceName.text = "${placeModel?.placeName}"
                 binding.PlaceImg.clipToOutline = true
                 binding.tvCity.text = "#${placeModel?.city} "
-                binding.tvAddress.text = "#${placeModel?.address}"
-                binding.tvPurpose.text = "#${placeModel?.purpose}"
+                binding.tvAddress.text = "#${placeModel?.address} "
+                binding.tvPurpose.text = "#${placeModel?.purpose} "
                 binding.tvDesc.text = "${placeModel?.description}"
 
 
@@ -144,5 +145,6 @@ class DetailActivity : AppCompatActivity() {
             intent.putExtra("ID",id)
             startActivity(intent)
         }
+
     }
 }
