@@ -65,7 +65,7 @@ class RecommendActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
-        val title = arrayOf("을숙도산책로", "대저 자전거 라이딩", "댕댕이가 좋아하는 공원", "이기대 러닝코스")
+        val title = arrayOf("을숙도산책로", "이기대 러닝코스", "댕댕이가 좋아하는 공원", "대저 자전거 라이딩")
         val latitudes = arrayOf(35.0995441147, 35.120355462733, 35.20154247887, 35.22500769737)
         val longitudes = arrayOf(128.93991106, 129.11201397379, 129.10588031253, 128.98331920464)
 
@@ -92,7 +92,7 @@ class RecommendActivity : AppCompatActivity(), OnMapReadyCallback {
                 val currentLng = p0.longitude
                 mMap.clear()
 
-                val title = arrayOf("을숙도산책로", "대저 자전거 라이딩", "댕댕이가 좋아하는 공원", "이기대 러닝코스")
+                val title = arrayOf("을숙도산책로", "이기대 러닝코스", "댕댕이가 좋아하는 공원", "대저 자전거 라이딩")
                 val latitudes = arrayOf(35.0995441147, 35.120355462733, 35.20154247887, 35.22500769737)
                 val longitudes = arrayOf(128.93991106, 129.11201397379, 129.10588031253, 128.98331920464)
 
