@@ -12,7 +12,7 @@ class TestApplication: Application() {
         var networkService: INetworkService
         val retrofit: Retrofit
             get() = Retrofit.Builder()
-                .baseUrl("http://183.104.176.163:8084/base/")
+                .baseUrl("http://10.100.104.40:8084/base/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
         init {

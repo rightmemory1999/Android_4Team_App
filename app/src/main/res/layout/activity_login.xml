@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/login_main2">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:background="@drawable/login_main2">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,20 +12,68 @@
         android:padding="20dp"
         android:layout_marginTop="200dp">
 
-        <EditText
-            android:id="@+id/authEmailEditView"
+<com.google.android.material.textfield.TextInputLayout
+    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="50dp">
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="이메일"
+        android:inputType="textEmailAddress"
+        android:id="@+id/authEmailEditView"
+        android:visibility="gone"
+        />
+
+</com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:passwordToggleEnabled="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:hint="이메일"
-            android:textColorHint="@color/deepdarkgray"
-            android:textColor="@color/deepgrayblack"
-            android:textStyle="bold"
-            android:backgroundTint="@color/deepdarkgray"
-            android:inputType="textEmailAddress"
-            android:visibility="gone" />
+            >
 
-        <EditText
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="비밀번호"
+                android:inputType="textPassword"
+                android:id="@+id/authPasswordEditView"
+                android:visibility="gone"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!--<?xml version="1.0" encoding="utf-8"?>
+        <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:background="@drawable/login_main2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:layout_marginTop="200dp">
+
+            <EditText
+                android:id="@+id/authEmailEditView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:hint="이메일"
+                android:textColorHint="@color/deepdarkgray"
+                android:textColor="@color/deepgrayblack"
+                android:textStyle="bold"
+                android:backgroundTint="@color/deepdarkgray"
+                android:inputType="textEmailAddress"
+                android:visibility="gone" />-->
+
+<!--        <EditText
             android:id="@+id/authPasswordEditView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -36,7 +84,8 @@
             android:textStyle="bold"
             android:backgroundTint="@color/deepdarkgray"
             android:inputType="textPassword"
-            android:visibility="gone" />
+            app:passwordToggleEnabled="true"
+            android:visibility="gone" />-->
 
         <Button
             android:id="@+id/loginBtn"
@@ -66,9 +115,9 @@
             android:id="@+id/notYet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="50dp"
             android:text="회원이 아니신가요?"
-            android:textSize="17sp"
+            android:textSize="15sp"
             android:textStyle="bold"
             android:textColor="@color/deepgrayblack"
             android:gravity="center_horizontal"
@@ -78,7 +127,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="5dp">
             <ImageView
                 android:id="@+id/goSignInBtn"
                 android:layout_width="60dp"
