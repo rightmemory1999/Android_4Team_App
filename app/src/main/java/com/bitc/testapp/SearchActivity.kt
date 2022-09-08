@@ -57,7 +57,6 @@ class SearchActivity : AppCompatActivity() {
                     Log.d("myLog", "TextChange: ${query}")
                     return false
                 }
-
             }
         binding.searchViewPlaces.setOnQueryTextListener(searchViewTextListener)
     }

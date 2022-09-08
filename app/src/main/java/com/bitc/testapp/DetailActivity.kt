@@ -37,8 +37,8 @@ class DetailActivity : AppCompatActivity() {
                 binding.tvPlaceName.text = "${placeModel?.placeName}"
                 binding.PlaceImg.clipToOutline = true
                 binding.tvCity.text = "#${placeModel?.city} "
-                binding.tvAddress.text = "#${placeModel?.address} "
-                binding.tvPurpose.text = "#${placeModel?.purpose} "
+                binding.tvAddress.text = "#${placeModel?.address}"
+                binding.tvPurpose.text = "#${placeModel?.purpose}"
                 binding.tvDesc.text = "${placeModel?.description}"
 
 
