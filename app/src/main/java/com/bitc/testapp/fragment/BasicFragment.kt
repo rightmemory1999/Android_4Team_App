@@ -10,9 +10,10 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bitc.testapp.R
 import com.bitc.testapp.TestApplication
-import com.bitc.testapp.adapter.PlaceAdapter
+import com.bitc.testapp.adapter.PlacesAdapter
 import com.bitc.testapp.databinding.FragmentBasicBinding
 import com.bitc.testapp.model.PlaceListModel
+import com.bitc.testapp.model.PlaceModel
 import com.bitc.testapp.model.UserListModel
 import retrofit2.Call
 import retrofit2.Callback
@@ -33,7 +34,7 @@ class BasicFragment : Fragment() {
                 response: Response<PlaceListModel>
             ) {
                 binding.recyclerView.layoutManager = LinearLayoutManager(activity)
-                var adapter = PlaceAdapter(activity as Context, response.body()?.places)
+                var adapter = PlacesAdapter(response.body()?.places as ArrayList<PlaceModel>)
                 binding.recyclerView.adapter = adapter
             }
 

@@ -8,13 +8,13 @@
     android:padding="10dp">
 
     <TextView
+        android:id="@+id/tvPlaceName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="40sp"
-        android:id="@+id/tvPlaceName"
         android:text="PlaceName"
-        android:textStyle="bold"
-        android:textColor="@color/black"/>
+        android:textColor="@color/black"
+        android:textSize="40sp"
+        android:textStyle="bold" />
 
     <View
         android:layout_width="match_parent"
@@ -25,13 +25,13 @@
         android:layout_below="@+id/tvPlaceName"/>
 
     <ImageView
+        android:id="@+id/PlaceImg"
         android:layout_width="wrap_content"
         android:layout_height="240dp"
-        android:id="@+id/PlaceImg"
-        android:src="@drawable/pet"
+        android:layout_below="@+id/line"
         android:layout_marginTop="10dp"
         android:background="@drawable/rounded_corner_border"
-        android:layout_below="@+id/line"/>
+        android:src="@drawable/pet" />
 
     <LinearLayout
         android:layout_width="match_parent"
