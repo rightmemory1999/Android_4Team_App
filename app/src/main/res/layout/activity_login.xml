@@ -31,7 +31,6 @@ android:background="@drawable/login_main2">
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            app:passwordToggleEnabled="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             >
@@ -42,6 +41,7 @@ android:background="@drawable/login_main2">
                 android:hint="비밀번호"
                 android:inputType="textPassword"
                 android:id="@+id/authPasswordEditView"
+                app:passwordToggleEnabled="true"
                 android:visibility="gone"
                 />
         </com.google.android.material.textfield.TextInputLayout>
