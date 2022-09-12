@@ -20,6 +20,7 @@
             android:text="My Place"
             android:layout_marginRight="10dp"/>
 
+        <!--모든 id 값은 절대 겹치지 않아야함. ex) etPlaceName + 10을 붙여서 겹치지 않도록 설정함-->
         <EditText
             android:id="@+id/etPlaceName10"
             android:layout_width="wrap_content"

@@ -22,7 +22,6 @@ class InputActivity : AppCompatActivity() {
 /*        binding.etPlaceName.setText(
          TestApplication.email.toString())*/
 
-
         var radioResult: String
         binding.saveBtn.setOnClickListener {
             if (binding.walk.isChecked) {

@@ -21,6 +21,7 @@ class UpdateActivity : AppCompatActivity() {
         binding = ActivityUpdateBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //게시글 데이터 불러오기
         val id1 = intent.getLongExtra("ID", 0)
         Log.d("myLog", "aaa+${id1}")
 
@@ -45,6 +46,8 @@ class UpdateActivity : AppCompatActivity() {
                         binding.drive10.isChecked = true
                     }
 
+                    //DetailActivity에서 있는 #${placeModel?.city} 에서 #을 빼고 코드 입력하여 게시글 수정시 #이 연속하여 붙지 않도록 함
+
                     binding.etCity10.setText("${placeModel?.city}")
                     binding.etAddress10.setText("${placeModel?.address}")
                     binding.etDescription10.setText("${placeModel?.description}")
@@ -62,7 +65,7 @@ class UpdateActivity : AppCompatActivity() {
 
             })
 
-
+        //수정하기 버튼 누르면 (아래 코드의) 입력한 데이터가 넘어가서 수정되도록.
         var radioResult: String
         binding.updateBtn10.setOnClickListener {
             if (binding.walk10.isChecked) {

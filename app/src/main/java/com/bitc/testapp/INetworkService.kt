@@ -24,10 +24,12 @@ interface INetworkService {
     @POST("insert")
     fun insert(@Body place: PlaceModel): Call<String>
 
-    //장소 삭제 + delete, put은 그대로 @delete, @put은 그대로 써도 됨
+    //장소 삭제
+    //DELETE, PUT의 경우, @POST("delete")으로 쓸 필요 없이 @DELETE @PUT 그대로 써도 됨
     @POST("delete")
     fun delete(@Body place: PlaceModel): Call<String>
 
+    //장소 수정
     @POST("update")
     fun update(@Body place: PlaceModel): Call<String>
 
