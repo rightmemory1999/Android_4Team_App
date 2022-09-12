@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bitc.testapp.R
 import com.bitc.testapp.TestApplication
 import com.bitc.testapp.adapter.PlaceAdapter
+import com.bitc.testapp.adapter.PlacesAdapter
 import com.bitc.testapp.adapter.SearchAdapter
 import com.bitc.testapp.databinding.FragmentBasicBinding
 import com.bitc.testapp.model.PlaceListModel
@@ -36,7 +37,8 @@ class BasicFragment : Fragment() {
                 response: Response<PlaceListModel>
             ) {
                 binding.recyclerView.layoutManager = LinearLayoutManager(activity)
-                var adapter = SearchAdapter(activity as Context, response.body()?.places)
+                var adapter = PlacesAdapter(response.body()?.places as ArrayList<PlaceModel>)
+//                var adapter = SearchAdapter(activity as Context, response.body()?.places)
                 binding.recyclerView.adapter = adapter
             }
 

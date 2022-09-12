@@ -69,7 +69,41 @@ class InputActivity : AppCompatActivity() {
                     call.cancel()
                 }
             })
+
             finish()
+        }
+    }
+
+    private fun startDefaultGalleryApp() {
+        val intent = Intent()
+        intent.type = "image/*"
+        intent.action = Intent.ACTION_GET_CONTENT
+        startActivityForResult(intent, DEFAULT_GALLERY_REQUEST_CODE)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (resultCode != Activity.RESULT_OK) {
+            return
+        }
+
+        when (requestCode) {
+            DEFAULT_GALLERY_REQUEST_CODE -> {
+                data?:return
+                val uri = data.data as Uri
+
+                binding.ivPhoto.setImageURI(uri)
+
+                val inputStream = contentResolver.openInputStream(uri)
+                val drawable = Drawable.createFromStream(inputStream, uri.toString())
+
+                photoDrawbale = drawable
+            }
+
+            else -> {
+                Toast.makeText(this, "사진을 가져오지 못했습니다.", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }

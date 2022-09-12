@@ -91,6 +91,7 @@ class DetailActivity : AppCompatActivity() {
                     finish()
                 }
 
+                //게시물 게시자(username)가 같은 경우에만 수정, 삭제 가능하도록. 이외에 사람은 수정, 삭제 버튼이 보이지 않도록 설정.
                 if (TestApplication.email == placeModel?.username) {
                     binding.deleteBtn1.visibility = View.VISIBLE
                     binding.updateBtn.visibility = View.VISIBLE
@@ -110,6 +111,7 @@ class DetailActivity : AppCompatActivity() {
                     finish()
                 }
 
+                //목록 버튼 클릭시 그 전 화면으로 넘어가도록 설정.
                 binding.listBtn.setOnClickListener {
                     onBackPressed()
                 }
@@ -151,12 +153,12 @@ class DetailActivity : AppCompatActivity() {
 //
 //        })
 
+        // 수정하기 버튼 클릭시 UpdateActivity로 가도록.
         val buttonClick = findViewById<Button>(R.id.updateBtn)
         buttonClick.setOnClickListener {
             val intent = Intent(this, UpdateActivity::class.java)
             intent.putExtra("ID",id)
             startActivity(intent)
         }
-
     }
 }

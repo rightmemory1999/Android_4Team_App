@@ -20,6 +20,7 @@
             android:text="My Place"
             android:layout_marginRight="10dp"/>
 
+        <!--모든 id 값은 절대 겹치지 않아야함. ex) etPlaceName + 10을 붙여서 겹치지 않도록 설정함-->
         <EditText
             android:id="@+id/etPlaceName10"
             android:layout_width="wrap_content"
@@ -158,6 +159,28 @@
             android:gravity="top"
             android:hint="ex. 가족 나들이도, 데이트도 좋아요"
             android:background="@drawable/input_border"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="top"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Photo"
+            android:layout_marginRight="10dp" />
+
+        <ImageView
+            android:id="@+id/ivPhoto"
+            android:layout_marginStart="16dp"
+            android:layout_width="fill_parent"
+            android:layout_height="100dp"
+            android:src="@drawable/default_image"/>
+
     </LinearLayout>
 
     <LinearLayout
