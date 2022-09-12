@@ -1,6 +1,7 @@
 package com.bitc.testapp
 
 import android.content.DialogInterface
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -17,10 +18,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.bitc.testapp.adapter.PlacesAdapter
 import com.bitc.testapp.adapter.TestAdapter
 import com.bitc.testapp.databinding.ActivityMainBinding
 import com.bitc.testapp.fragment.*
+import com.bitc.testapp.model.PlaceModel
 import com.bitc.testapp.model.UserListModel
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -31,6 +33,12 @@ import retrofit2.Response
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
     lateinit var toggle: ActionBarDrawerToggle
+
+    companion object {
+        val placeList = arrayListOf<PlaceModel>()
+    }
+
+    private lateinit var mAdapter: PlacesAdapter
 
     class FragmentPagerAdapter(activity: FragmentActivity): FragmentStateAdapter(activity){
         val fragments: List<Fragment>
@@ -45,18 +53,18 @@ class MainActivity : AppCompatActivity() {
             return fragments[position]
         }
 
-    }
-
     override fun onBackPressed() {
         Toast.makeText(this, "로그인 페이지로 돌아갑니다", Toast.LENGTH_SHORT).show()
         super.onBackPressed()
     }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        setAdapter()
+
         setSupportActionBar(binding.toolbar) // 드로어 출력 버튼
 
         toggle = ActionBarDrawerToggle(this, binding.drawer, R.string.open, R.string.close )
@@ -201,5 +209,23 @@ class MainActivity : AppCompatActivity() {
             val intent_recPlace = Intent(this, RecommendActivity::class.java)
             startActivity(intent_recPlace)
         }
+
     }
+
+    override fun onResume() {
+        super.onResume()
+
+        mAdapter.notifyDataSetChanged()
+    }
+
+    private fun setAdapter() {
+        mAdapter = PlacesAdapter(placeList)
+
+        binding.rvPlace.apply {
+            layoutManager = LinearLayoutManager(applicationContext)
+            setHasFixedSize(true)
+            adapter = mAdapter
+        }
+    }
+
 }

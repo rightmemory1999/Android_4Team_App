@@ -153,11 +153,33 @@
             android:layout_width="210dp"
             android:layout_height="100dp"
             android:layout_weight="1"
+            android:background="@drawable/input_border"
             android:ems="10"
-            android:inputType="textLongMessage"
             android:gravity="top"
             android:hint="ex. 가족 나들이도, 데이트도 좋아요"
-            android:background="@drawable/input_border"/>
+            android:inputType="textLongMessage" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="top"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Photo"
+            android:layout_marginRight="10dp" />
+
+        <ImageView
+            android:id="@+id/ivPhoto"
+            android:layout_marginStart="16dp"
+            android:layout_width="fill_parent"
+            android:layout_height="100dp"
+            android:src="@drawable/default_image"/>
+
     </LinearLayout>
 
     <LinearLayout
