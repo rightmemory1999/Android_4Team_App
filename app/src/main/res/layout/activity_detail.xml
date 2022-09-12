@@ -78,9 +78,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
-
             </RelativeLayout>
-
         </LinearLayout>
 
 
@@ -94,7 +92,6 @@
             android:text="place description"
             android:textSize="24sp"
             android:textStyle="bold" />
-
 
         <Button
             android:id="@+id/listBtn"
@@ -142,8 +139,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
+            android:background="#FFFFFF"
             android:orientation="horizontal">
-
 
             <EditText
                 android:id="@+id/comment_text"
@@ -164,7 +161,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/comment_recview"
