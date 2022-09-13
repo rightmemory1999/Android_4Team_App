@@ -34,6 +34,10 @@ class InputActivity : AppCompatActivity() {
             startDefaultGalleryApp()
         }
 
+        binding.cancelBtn.setOnClickListener {
+            onBackPressed()
+        }
+
         binding.saveBtn.setOnClickListener {
             if (binding.walk.isChecked) {
                 radioResult = binding.walk.text.toString()
@@ -69,6 +73,7 @@ class InputActivity : AppCompatActivity() {
                     call.cancel()
                 }
             })
+
             finish()
         }
     }

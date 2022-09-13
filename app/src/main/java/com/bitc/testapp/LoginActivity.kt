@@ -134,6 +134,10 @@ class LoginActivity : AppCompatActivity() {
         binding.toMainBtn.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
         }
+
+        binding.toLoginBtn.setOnClickListener {
+            changeVisibility("logout")
+        }
     }
 
     override fun onBackPressed() {
@@ -163,6 +167,7 @@ class LoginActivity : AppCompatActivity() {
                 authEmailEditView.visibility= View.GONE
                 authPasswordEditView.visibility= View.GONE
                 signBtn.visibility= View.GONE
+                toLoginBtn.visibility = View.GONE
                 loginBtn.visibility= View.GONE
             }
 
@@ -178,6 +183,7 @@ class LoginActivity : AppCompatActivity() {
                 authEmailEditView.visibility = View.VISIBLE
                 authPasswordEditView.visibility = View.VISIBLE
                 signBtn.visibility = View.GONE
+                toLoginBtn.visibility = View.GONE
                 loginBtn.visibility = View.VISIBLE
             }
         }else if(mode === "signin"){
@@ -192,6 +198,7 @@ class LoginActivity : AppCompatActivity() {
                 authEmailEditView.visibility = View.VISIBLE
                 authPasswordEditView.visibility = View.VISIBLE
                 signBtn.visibility = View.VISIBLE
+                toLoginBtn.visibility = View.VISIBLE
                 loginBtn.visibility = View.GONE
             }
         }
