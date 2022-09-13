@@ -1,6 +1,7 @@
 package com.bitc.testapp
 
 import android.content.DialogInterface
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -18,10 +19,10 @@ import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.bitc.testapp.adapter.TestAdapter
+import com.bitc.testapp.adapter.PlacesAdapter
 import com.bitc.testapp.databinding.ActivityMainBinding
 import com.bitc.testapp.fragment.*
-import com.bitc.testapp.model.UserListModel
+import com.bitc.testapp.model.PlaceModel
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import retrofit2.Call
@@ -32,20 +33,27 @@ class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
     lateinit var toggle: ActionBarDrawerToggle
 
-    class FragmentPagerAdapter(activity: FragmentActivity): FragmentStateAdapter(activity){
-        val fragments: List<Fragment>
-        init {
-            fragments = listOf(WalkFragment(), PetWalkFragment(), RunningFragment(), RidingFragment(), DriveFragment(), MapFragment())
-        }
-        override fun getItemCount(): Int {
-            return fragments.size
-        }
-
-        override fun createFragment(position: Int): Fragment {
-            return fragments[position]
-        }
-
+    companion object {
+        val placeList = arrayListOf<PlaceModel>()
     }
+
+    private lateinit var mAdapter: PlacesAdapter
+
+//    class FragmentPagerAdapter(activity: FragmentActivity): FragmentStateAdapter(activity) {
+//        val fragments: List<Fragment>
+//
+//        init {
+//            fragments = listOf(WalkFragment(),PetWalkFragment(), RunningFragment(), RidingFragment(),DriveFragment(), MapFragment())
+//        }
+//
+//        override fun getItemCount(): Int {
+//            return fragments.size
+//        }
+//
+//        override fun createFragment(position: Int): Fragment {
+//            return fragments[position]
+//        }
+//    }
 
     override fun onBackPressed() {
         Toast.makeText(this, "로그인 페이지로 돌아갑니다", Toast.LENGTH_SHORT).show()
@@ -57,6 +65,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        setAdapter()
+
         setSupportActionBar(binding.toolbar) // 드로어 출력 버튼
 
         toggle = ActionBarDrawerToggle(this, binding.drawer, R.string.open, R.string.close )
@@ -86,58 +97,14 @@ class MainActivity : AppCompatActivity() {
             val intent_recPlace = Intent(this, RecommendActivity::class.java)
             startActivity(intent_recPlace)
         }
-
-//        val networkService = (applicationContext as TestApplication).networkService
-//        val networkService = TestApplication.networkService
-//        val userListModelCall = networkService.doGetUserList()
-//        userListModelCall.enqueue(object : Callback<UserListModel>{
-//            override fun onResponse(call: Call<UserListModel>, response: Response<UserListModel>) {
-//                if(response.isSuccessful){
-//                    binding.recyclerView1.layoutManager = LinearLayoutManager(this@MainActivity)
-//                    binding.recyclerView1.adapter = TestAdapter(this@MainActivity, response.body()?.users)
-//                    binding.recyclerView1.addItemDecoration(DividerItemDecoration(this@MainActivity, LinearLayoutManager.VERTICAL))
-//                }
-//            }
-//
-//            override fun onFailure(call: Call<UserListModel>, t: Throwable) {
-//                call.cancel()
-//            }
-//        })
     }
-
-//    override fun onStart() {
-//        super.onStart()
-////        val networkService = (applicationContext as TestApplication).networkService
-//        val networkService = TestApplication.networkService
-//        val userListModelCall = networkService.doGetUserList()
-//        userListModelCall.enqueue(object : Callback<UserListModel>{
-//            override fun onResponse(call: Call<UserListModel>, response: Response<UserListModel>) {
-//                if(response.isSuccessful){
-//                    binding.recyclerView1.layoutManager = LinearLayoutManager(this@MainActivity)
-//                    binding.recyclerView1.adapter = TestAdapter(this@MainActivity, response.body()?.users)
-//                    binding.recyclerView1.addItemDecoration(DividerItemDecoration(this@MainActivity, LinearLayoutManager.VERTICAL))
-//                }
-//            }
-//
-//            override fun onFailure(call: Call<UserListModel>, t: Throwable) {
-//                call.cancel()
-//            }
-//        })
-//    }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if(toggle.onOptionsItemSelected(item)){
-            var item1 = findViewById<View>(R.id.drawerItem1)
-            var item2 = findViewById<View>(R.id.drawerItem2)
             var item3 = findViewById<View>(R.id.drawerSearch)
             var item4 = findViewById<View>(R.id.drawerLogout)
             var item5 = findViewById<View>(R.id.drawerQuit)
-            item1.setOnClickListener {
-                Toast.makeText(this, "item1 클릭", Toast.LENGTH_SHORT).show()
-            }
-            item2.setOnClickListener {
-
-            }
+            
             item3.setOnClickListener {
                 startActivity(Intent(this, SearchActivity::class.java))
             }
@@ -172,6 +139,8 @@ class MainActivity : AppCompatActivity() {
         super.onStart()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        setAdapter()
         setSupportActionBar(binding.toolbar) // 드로어 출력 버튼
 
         toggle = ActionBarDrawerToggle(this, binding.drawer, R.string.open, R.string.close )
@@ -200,6 +169,21 @@ class MainActivity : AppCompatActivity() {
         binding.fabForRecPlace.setOnClickListener {
             val intent_recPlace = Intent(this, RecommendActivity::class.java)
             startActivity(intent_recPlace)
+        }
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mAdapter.notifyDataSetChanged()
+    }
+
+    private fun setAdapter() {
+        mAdapter = PlacesAdapter(placeList)
+        binding.rvPlace.apply {
+            layoutManager = LinearLayoutManager(applicationContext)
+            setHasFixedSize(true)
+            adapter = mAdapter
         }
     }
 }

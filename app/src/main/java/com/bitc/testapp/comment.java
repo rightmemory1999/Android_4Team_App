@@ -153,7 +153,4 @@ public class comment extends AppCompatActivity {
             firebaseRecyclerAdapter.startListening();
             recview.setAdapter(firebaseRecyclerAdapter);
     }
-
-
-
 }

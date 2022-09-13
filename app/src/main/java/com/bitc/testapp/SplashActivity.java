@@ -15,7 +15,6 @@ public class SplashActivity extends AppCompatActivity {
         moveMain(3);	//1초 후 main activity 로 넘어감
     }
 
-
     private void moveMain(int sec) {
         new Handler().postDelayed(new Runnable()
         {

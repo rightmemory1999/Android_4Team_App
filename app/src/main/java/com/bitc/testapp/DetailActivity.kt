@@ -2,24 +2,34 @@ package com.bitc.testapp
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
+import android.database.Cursor
+import android.graphics.drawable.Drawable
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import android.provider.MediaStore
 import com.bitc.testapp.databinding.ActivityDetailBinding
 import com.bitc.testapp.model.PlaceListModel
 import com.bitc.testapp.model.PlaceModel
-import com.bitc.testapp.model.UserModel
+import com.google.android.material.internal.ContextUtils.getActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class DetailActivity : AppCompatActivity() {
     lateinit var binding: ActivityDetailBinding
+
+    companion object {
+        var photoUri: Drawable?= null
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
     }
@@ -27,6 +37,23 @@ class DetailActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         val id = intent.getLongExtra("id", 0)
+        //toPost - 아래줄부터 photoUri 까지, onCreat() 안에 작성해놓음
+        val placeName = intent.getStringExtra("placeName")
+        val purpose = intent.getStringExtra("purpose")
+        val city = intent.getStringExtra("city")
+        val address = intent.getStringExtra("address")
+        val description = intent.getStringExtra("description")
+
+        binding.tvPlaceName.text = placeName
+        binding.tvPurpose.text = purpose
+        binding.tvCity.text = city
+        binding.tvAddress.text = address
+        binding.tvDesc.text = description
+
+        if(photoUri != null) {
+            binding.PlaceImg.setImageDrawable(photoUri)
+            photoUri = null
+        }
 
         val networkService = TestApplication.networkService
 //        val networkService = (applicationContext as TestApplication).networkService
@@ -88,43 +115,12 @@ class DetailActivity : AppCompatActivity() {
                 binding.listBtn.setOnClickListener {
                     onBackPressed()
                 }
-
-/*                binding.listBtn.setOnClickListener{
-                    val placeListCall = networkService.list(placeModel!!)
-                    placeListCall.enqueue(object : Callback<String>{
-                        override fun onResponse(call: Call<String>, response: Response<String>) {
-                            Log.d("myLog", response.body().toString())
-                        }
-
-                        override fun onFailure(call: Call<String>, t: Throwable) {
-                            call.cancel()
-                        }
-                    })
-                    finish()
-                }*/
             }
 
             override fun onFailure(call: Call<PlaceModel>, t: Throwable) {
                 TODO("Not yet implemented")
             }
-
         })
-
-//        val userModelCall = networkService.doGetUser(id)
-//        userModelCall.enqueue(object : Callback<UserModel>{
-//            override fun onResponse(call: Call<UserModel>, response: Response<UserModel>) {
-//                val userModel = response.body()
-//                binding.tvId.text = "${userModel?.id}"
-//                binding.tvName.text = "${userModel?.name}"
-//                binding.tvUsername.text = "${userModel?.username}"
-//                binding.tvTel.text = "${userModel?.tel}"
-//            }
-//
-//            override fun onFailure(call: Call<UserModel>, t: Throwable) {
-//                TODO("Not yet implemented")
-//            }
-//
-//        })
 
         // 수정하기 버튼 클릭시 UpdateActivity로 가도록.
         val buttonClick = findViewById<Button>(R.id.updateBtn)
@@ -133,6 +129,5 @@ class DetailActivity : AppCompatActivity() {
             intent.putExtra("ID",id)
             startActivity(intent)
         }
-
     }
 }

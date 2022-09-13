@@ -1,14 +1,18 @@
 package com.bitc.testapp
 
+import android.app.Activity
+import android.content.Intent
+import android.graphics.drawable.Drawable
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.RadioGroup
+import android.widget.Toast
 import com.bitc.testapp.TestApplication.Companion.networkService
 import com.bitc.testapp.databinding.ActivityUpdateBinding
 import com.bitc.testapp.model.PlaceModel
-import com.bitc.testapp.model.UserModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -16,6 +20,13 @@ import retrofit2.Response
 class UpdateActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityUpdateBinding
+
+    companion object {
+        const val DEFAULT_GALLERY_REQUEST_CODE = 1002
+    }
+
+    private var photoDrawbale: Drawable?= null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityUpdateBinding.inflate(layoutInflater)
@@ -47,7 +58,6 @@ class UpdateActivity : AppCompatActivity() {
                     }
 
                     //DetailActivity에서 있는 #${placeModel?.city} 에서 #을 빼고 코드 입력하여 게시글 수정시 #이 연속하여 붙지 않도록 함
-
                     binding.etCity10.setText("${placeModel?.city}")
                     binding.etAddress10.setText("${placeModel?.address}")
                     binding.etDescription10.setText("${placeModel?.description}")
@@ -55,15 +65,16 @@ class UpdateActivity : AppCompatActivity() {
                     binding.cancelBtn10.setOnClickListener {
                         onBackPressed()
                     }
-/*                    placeModel2= placeModel!!*/
-
                 }
 
                 override fun onFailure(call: Call<PlaceModel>, t: Throwable) {
                     Log.d("myLog", "aaa+${id1}")
                 }
-
             })
+
+        binding.ivPhoto.setOnClickListener {
+            startDefaultGalleryApp()
+        }
 
         //수정하기 버튼 누르면 (아래 코드의) 입력한 데이터가 넘어가서 수정되도록.
         var radioResult: String
@@ -87,7 +98,8 @@ class UpdateActivity : AppCompatActivity() {
                 purpose = radioResult,
                 city = binding.etCity10.text.toString(),
                 address = binding.etAddress10.text.toString(),
-                description = binding.etDescription10.text.toString()
+                description = binding.etDescription10.text.toString(),
+                photoDrawable = photoDrawbale
             )
             val networkService = TestApplication.networkService
             val placeUpdateCall = networkService.update(placeModel)
@@ -101,6 +113,39 @@ class UpdateActivity : AppCompatActivity() {
                 }
             })
             finish()
+        }
+    }
+
+    private fun startDefaultGalleryApp() {
+        val intent = Intent()
+        intent.type = "image/*"
+        intent.action = Intent.ACTION_GET_CONTENT
+        startActivityForResult(intent, InputActivity.DEFAULT_GALLERY_REQUEST_CODE)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (resultCode != Activity.RESULT_OK) {
+            return
+        }
+
+        when (requestCode) {
+            InputActivity.DEFAULT_GALLERY_REQUEST_CODE -> {
+                data?:return
+                val uri = data.data as Uri
+
+                binding.ivPhoto.setImageURI(uri)
+
+                val inputStream = contentResolver.openInputStream(uri)
+                val drawable = Drawable.createFromStream(inputStream, uri.toString())
+
+                photoDrawbale = drawable
+            }
+
+            else -> {
+                Toast.makeText(this, "사진을 가져오지 못했습니다.", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }
