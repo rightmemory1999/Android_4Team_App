@@ -60,14 +60,4 @@ class SearchActivity : AppCompatActivity() {
             }
         binding.searchViewPlaces.setOnQueryTextListener(searchViewTextListener)
     }
-
-//    override fun onStart() {
-//        super.onStart()
-//        binding = ActivitySearchBinding.inflate(layoutInflater)
-//        setContentView(binding.root)
-//
-//        val adapter = FragmentAdapter(this)
-//        binding.viewPagerPlaces.adapter = adapter
-//    }
-
 }

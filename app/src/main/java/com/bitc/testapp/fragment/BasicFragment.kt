@@ -17,7 +17,6 @@ import com.bitc.testapp.adapter.SearchAdapter
 import com.bitc.testapp.databinding.FragmentBasicBinding
 import com.bitc.testapp.model.PlaceListModel
 import com.bitc.testapp.model.PlaceModel
-import com.bitc.testapp.model.UserListModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

@@ -115,43 +115,12 @@ class DetailActivity : AppCompatActivity() {
                 binding.listBtn.setOnClickListener {
                     onBackPressed()
                 }
-
-/*                binding.listBtn.setOnClickListener{
-                    val placeListCall = networkService.list(placeModel!!)
-                    placeListCall.enqueue(object : Callback<String>{
-                        override fun onResponse(call: Call<String>, response: Response<String>) {
-                            Log.d("myLog", response.body().toString())
-                        }
-
-                        override fun onFailure(call: Call<String>, t: Throwable) {
-                            call.cancel()
-                        }
-                    })
-                    finish()
-                }*/
             }
 
             override fun onFailure(call: Call<PlaceModel>, t: Throwable) {
                 TODO("Not yet implemented")
             }
-
         })
-
-//        val userModelCall = networkService.doGetUser(id)
-//        userModelCall.enqueue(object : Callback<UserModel>{
-//            override fun onResponse(call: Call<UserModel>, response: Response<UserModel>) {
-//                val userModel = response.body()
-//                binding.tvId.text = "${userModel?.id}"
-//                binding.tvName.text = "${userModel?.name}"
-//                binding.tvUsername.text = "${userModel?.username}"
-//                binding.tvTel.text = "${userModel?.tel}"
-//            }
-//
-//            override fun onFailure(call: Call<UserModel>, t: Throwable) {
-//                TODO("Not yet implemented")
-//            }
-//
-//        })
 
         // 수정하기 버튼 클릭시 UpdateActivity로 가도록.
         val buttonClick = findViewById<Button>(R.id.updateBtn)

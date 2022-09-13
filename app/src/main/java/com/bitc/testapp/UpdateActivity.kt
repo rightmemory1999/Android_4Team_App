@@ -13,7 +13,6 @@ import android.widget.Toast
 import com.bitc.testapp.TestApplication.Companion.networkService
 import com.bitc.testapp.databinding.ActivityUpdateBinding
 import com.bitc.testapp.model.PlaceModel
-import com.bitc.testapp.model.UserModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -66,14 +65,11 @@ class UpdateActivity : AppCompatActivity() {
                     binding.cancelBtn10.setOnClickListener {
                         onBackPressed()
                     }
-/*                    placeModel2= placeModel!!*/
-
                 }
 
                 override fun onFailure(call: Call<PlaceModel>, t: Throwable) {
                     Log.d("myLog", "aaa+${id1}")
                 }
-
             })
 
         binding.ivPhoto.setOnClickListener {

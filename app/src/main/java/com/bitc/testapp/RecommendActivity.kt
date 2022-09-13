@@ -77,10 +77,6 @@ class RecommendActivity : AppCompatActivity(), OnMapReadyCallback {
         val basicLocation = LatLng(35.1795543, 129.0756416)
         mMap.addMarker(MarkerOptions().position(basicLocation).title("기본 위치"))
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(basicLocation, 11f))
-
-//        val place1 = LatLng(35.1795543, 129.0756416)
-//        mMap.addMarker(MarkerOptions().position(place1).title("좋은장소").icon(customMarker))
-//        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(place1, 11f))
     }
 
     @SuppressLint("MissingPermission")

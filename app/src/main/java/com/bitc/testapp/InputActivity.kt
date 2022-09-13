@@ -69,7 +69,6 @@ class InputActivity : AppCompatActivity() {
                     call.cancel()
                 }
             })
-
             finish()
         }
     }
