@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".InputActivity">
+    tools:context=".UpdateActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,8 +20,9 @@
             android:text="My Place"
             android:layout_marginRight="10dp"/>
 
+        <!--모든 id 값은 절대 겹치지 않아야함. ex) etPlaceName + 10을 붙여서 겹치지 않도록 설정함-->
         <EditText
-            android:id="@+id/etPlaceName"
+            android:id="@+id/etPlaceName10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -54,38 +55,38 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:id="@+id/radioGrp">
+            android:id="@+id/radioGrp10">
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="걷기"
                 android:layout_weight="1"
-                android:id="@+id/walk" />
+                android:id="@+id/walk10" />
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="펫산책"
                 android:layout_weight="1"
-                android:id="@+id/withPet" />
+                android:id="@+id/withPet10" />
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="러닝"
                 android:layout_weight="1"
-                android:id="@+id/running" />
+                android:id="@+id/running10" />
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="라이딩"
                 android:layout_weight="1"
-                android:id="@+id/riding" />
+                android:id="@+id/riding10" />
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="드라이브"
                 android:layout_weight="1"
-                android:id="@+id/drive" />
+                android:id="@+id/drive10" />
         </RadioGroup>
     </LinearLayout>
 
@@ -103,7 +104,7 @@
             android:layout_marginRight="10dp"/>
 
         <EditText
-            android:id="@+id/etCity"
+            android:id="@+id/etCity10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -126,7 +127,7 @@
             android:layout_marginRight="10dp"/>
 
         <EditText
-            android:id="@+id/etAddress"
+            android:id="@+id/etAddress10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -149,15 +150,15 @@
             android:layout_marginRight="10dp"/>
 
         <EditText
-            android:id="@+id/etDescription"
+            android:id="@+id/etDescription10"
             android:layout_width="210dp"
             android:layout_height="100dp"
             android:layout_weight="1"
-            android:background="@drawable/input_border"
             android:ems="10"
+            android:inputType="textLongMessage"
             android:gravity="top"
             android:hint="ex. 가족 나들이도, 데이트도 좋아요"
-            android:inputType="textLongMessage" />
+            android:background="@drawable/input_border"/>
     </LinearLayout>
 
     <LinearLayout
@@ -191,11 +192,11 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="저장"
+            android:text="수정"
             android:layout_gravity="center_horizontal"
             android:layout_margin="20dp"
             android:layout_weight="1"
-            android:id="@+id/saveBtn"/>
+            android:id="@+id/updateBtn10"/>
 
         <Button
             android:layout_width="wrap_content"
@@ -204,7 +205,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_margin="20dp"
             android:layout_weight="1"
-            android:id="@+id/cancelBtn"/>
+            android:id="@+id/cancelBtn10"/>
 
     </LinearLayout>
 

@@ -9,40 +9,41 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bitc.testapp.R
 import com.bitc.testapp.TestApplication
+import com.bitc.testapp.adapter.PlaceAdapter
 import com.bitc.testapp.adapter.PlacesAdapter
-import com.bitc.testapp.databinding.FragmentBasicBinding
+import com.bitc.testapp.databinding.FragmentWalkBinding
 import com.bitc.testapp.model.PlaceListModel
 import com.bitc.testapp.model.PlaceModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class PetWalkFragment : Fragment() {
+class WalkFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentBasicBinding.inflate(inflater, container, false)
+        val binding = FragmentWalkBinding.inflate(inflater, container, false)
 
-        val networkService = TestApplication.networkService
-        val placeListModelCall = networkService.getPlacesByPurpose("펫산책")
-        placeListModelCall.enqueue(object : Callback<PlaceListModel> {
+        val call: Call<PlaceListModel> = TestApplication.networkService.getPlacesByPurpose("걷기")
+        call.enqueue(object : Callback<PlaceListModel> {
             override fun onResponse(
                 call: Call<PlaceListModel>,
                 response: Response<PlaceListModel>
             ) {
-                if(response.isSuccessful){
-                    binding.recyclerView.layoutManager = LinearLayoutManager(activity)
-                    var adapter = PlacesAdapter(response.body()?.places as ArrayList<PlaceModel>)
-                    binding.recyclerView.adapter = adapter
-                }
+                binding.recyclerView.layoutManager = LinearLayoutManager(activity)
+                var adapter = PlacesAdapter(response.body()?.places as ArrayList<PlaceModel>)
+//                var adapter = PlaceAdapter(activity as Context, response.body()?.places)
+                binding.recyclerView.adapter = adapter
             }
 
             override fun onFailure(call: Call<PlaceListModel>, t: Throwable) {
                 call.cancel()
             }
         })
+
         return binding.root
     }
+
 }

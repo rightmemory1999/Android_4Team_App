@@ -22,11 +22,10 @@
             <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:contentScrim="?attr/colorPrimary"
+                app:contentScrim="@color/skyblue2"
                 app:expandedTitleMarginTop="40dp"
                 app:expandedTitleMarginBottom="30dp"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed"
-                app:title="Android 4team">
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -34,7 +33,7 @@
                     android:id="@+id/item_image"
                     android:scaleType="centerCrop"
                     app:layout_collapseMode="parallax"
-                    android:src="@drawable/actionbar_main_img"/>
+                    android:src="@drawable/logo_title"/>
                 <androidx.appcompat.widget.Toolbar
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
@@ -43,6 +42,12 @@
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
         </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvPlace"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
         <androidx.viewpager2.widget.ViewPager2
             android:layout_width="match_parent"
@@ -57,19 +62,19 @@
             android:layout_gravity="bottom"
             app:layout_collapseMode="parallax"
             app:tabMode="auto"
-            android:background="#CDDC39"
-            app:tabIconTint="#8BC34A"
-            app:tabTextColor="@color/white"
-            app:tabSelectedTextColor="@color/black"
-            app:tabIndicatorColor="@color/black"
+            android:background="@color/skyblue1"
+            app:tabIconTint="@color/skyblue2"
+            app:tabTextColor="@color/deepgrayblack"
+            app:tabSelectedTextColor="@color/deepgrayblack"
+            app:tabIndicatorColor="@color/skyblue7"
             app:tabIndicatorHeight="8dp"
             app:title="Android 4team">
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="전체"
-                />
+                android:text="전체" />
+
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -84,7 +89,18 @@
             app:icon="@android:drawable/ic_input_add"
             android:text="My Place"
             android:layout_gravity="right"
-            android:layout_margin="10dp"/>
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="500dp"/>
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/fabForRecPlace"
+            app:icon="@android:drawable/ic_menu_help"
+            android:text="recommend"
+            android:layout_gravity="right"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="560dp"/>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
@@ -97,25 +113,3 @@
         app:menu="@menu/menu_navi"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>
-<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
-<!--    xmlns:tools="http://schemas.android.com/tools"-->
-<!--    android:layout_width="match_parent"-->
-<!--    android:layout_height="match_parent"-->
-<!--    tools:context=".MainActivity">-->
-
-<!--    <androidx.recyclerview.widget.RecyclerView-->
-<!--        android:id="@+id/recyclerView1"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent" />-->
-
-<!--    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:id="@+id/fab"-->
-<!--        app:icon="@android:drawable/ic_input_add"-->
-<!--        android:text="add"-->
-<!--        android:layout_alignParentRight="true"-->
-<!--        android:layout_alignParentBottom="true"-->
-<!--        android:layout_margin="10dp"/>-->
-<!--</RelativeLayout>-->

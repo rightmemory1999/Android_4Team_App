@@ -14,6 +14,7 @@ class PlaceViewHolder(val binding: ItemBinding): RecyclerView.ViewHolder(binding
 class PlaceAdapter(
     val context: Context, val places: MutableList<PlaceModel>?):
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return PlaceViewHolder(
             ItemBinding.inflate(

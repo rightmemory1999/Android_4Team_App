@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:title="아이템1"
-        android:icon="@android:drawable/ic_menu_share" />
-    <item
-        android:title="아이템2"
-        android:icon="@android:drawable/ic_menu_help" />
-    <item
-        android:title="아이템3"
+        android:title="장소 전체"
+        android:id="@+id/drawerSearch"
         android:icon="@android:drawable/ic_menu_search" />
     <item
-        android:title="아이템4"
-        android:icon="@android:drawable/ic_menu_add" />
+        android:title="로그아웃"
+        android:id="@+id/drawerLogout"
+        android:icon="@android:drawable/ic_lock_power_off" />
+    <item
+        android:title="회원탈퇴"
+        android:id="@+id/drawerQuit"
+        android:icon="@android:drawable/ic_delete" />
 
 </menu>

@@ -1,104 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--<FrameLayout-->
-<!--    xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--    android:layout_width="match_parent"-->
-<!--    android:layout_height="match_parent"-->
-<!--    android:background="@drawable/login_img"> -->
-<!--    -->
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:orientation="vertical"-->
-<!--        android:padding="20dp">-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/authMainTextView"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="20dp"-->
-<!--            android:text="dfdfsdf"/>-->
-
-<!--        <Button-->
-<!--            android:id="@+id/logoutBtn"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="20dp"-->
-<!--            android:backgroundTint="#FF0000"-->
-<!--            android:text="로그아웃"-->
-<!--            android:textColor="@color/white"-->
-<!--            android:textStyle="bold"-->
-<!--            android:visibility="visible" />-->
-
-<!--        <Button-->
-<!--            android:id="@+id/goSignInBtn"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            android:backgroundTint="#FF0000"-->
-<!--            android:text="회원가입"-->
-<!--            android:textColor="@color/white"-->
-<!--            android:textStyle="bold"-->
-<!--            android:visibility="visible" />-->
-
-<!--        <Button-->
-<!--            android:id="@+id/googleLoginBtn"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            android:backgroundTint="#FF0000"-->
-<!--            android:text="구글인증"-->
-<!--            android:textColor="@color/white"-->
-<!--            android:textStyle="bold"-->
-<!--            android:visibility="visible" />-->
-
-<!--        <EditText-->
-<!--            android:id="@+id/authEmailEditView"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="20dp"-->
-<!--            android:hint="이메일"-->
-<!--            android:inputType="textEmailAddress"-->
-<!--            android:visibility="visible" />-->
-
-<!--        <EditText-->
-<!--            android:id="@+id/authPasswordEditView"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="20dp"-->
-<!--            android:hint="비밀번호 - 6자 이상"-->
-<!--            android:inputType="textPassword"-->
-<!--            android:visibility="visible" />-->
-
-<!--        <Button-->
-<!--            android:id="@+id/signBtn"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            android:backgroundTint="#FF0000"-->
-<!--            android:text="가입"-->
-<!--            android:textColor="@color/white"-->
-<!--            android:textStyle="bold"-->
-<!--            android:visibility="visible" />-->
-
-<!--        <Button-->
-<!--            android:id="@+id/loginBtn"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            android:backgroundTint="#FF0000"-->
-<!--            android:text="로그인"-->
-<!--            android:textColor="@color/white"-->
-<!--            android:textStyle="bold"-->
-<!--            android:visibility="visible" />-->
-<!--    </LinearLayout>-->
-
-<!--</FrameLayout>-->
-
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/login_main">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:background="@drawable/login_main2">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -107,31 +12,39 @@
         android:padding="20dp"
         android:layout_marginTop="200dp">
 
-        <EditText
-            android:id="@+id/authEmailEditView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:hint="이메일"
-            android:textColorHint="@color/white"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:backgroundTint="@color/white"
-            android:inputType="textEmailAddress"
-            android:visibility="gone" />
+<com.google.android.material.textfield.TextInputLayout
+    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="50dp">
 
-        <EditText
-            android:id="@+id/authPasswordEditView"
+    <com.google.android.material.textfield.TextInputEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="이메일"
+        android:inputType="textEmailAddress"
+        android:id="@+id/authEmailEditView"
+        android:visibility="gone"
+        />
+
+</com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:hint="비밀번호 - 6자 이상"
-            android:textColorHint="@color/white"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:backgroundTint="@color/white"
-            android:inputType="textPassword"
-            android:visibility="gone" />
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="비밀번호"
+                android:inputType="textPassword"
+                android:id="@+id/authPasswordEditView"
+                app:passwordToggleEnabled="true"
+                android:visibility="gone"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/loginBtn"
@@ -139,9 +52,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_gravity="center_horizontal"
-            android:backgroundTint="#8BC34A"
+            android:backgroundTint="@color/skyblue6"
             android:text="로그인"
-            android:textColor="@color/black"
+            android:textColor="@color/deepdarkgray"
             android:textStyle="bold"
             android:visibility="gone" />
 
@@ -151,9 +64,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_gravity="center_horizontal"
-            android:backgroundTint="#8BC34A"
+            android:backgroundTint="@color/skyblue1"
             android:text="가입"
-            android:textColor="@color/black"
+            android:textColor="@color/deepdarkgray"
             android:textStyle="bold"
             android:visibility="gone" />
 
@@ -161,11 +74,11 @@
             android:id="@+id/notYet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="50dp"
             android:text="회원이 아니신가요?"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:textStyle="bold"
-            android:textColor="#00BCD4"
+            android:textColor="@color/deepgrayblack"
             android:gravity="center_horizontal"
             android:visibility="gone"/>
 
@@ -173,7 +86,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="5dp">
             <ImageView
                 android:id="@+id/goSignInBtn"
                 android:layout_width="60dp"
@@ -207,16 +120,16 @@
                 android:text="이메일로 가입하기"
                 android:textSize="15sp"
                 android:textStyle="bold"
-                android:textColor="@color/black"
+                android:textColor="@color/grayblack"
                 android:gravity="center"
                 android:layout_weight="1"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="구글계정 인증"
+                android:text="구글계정으로 가입하기"
                 android:textSize="15sp"
                 android:textStyle="bold"
-                android:textColor="@color/black"
+                android:textColor="@color/grayblack"
                 android:gravity="center"
                 android:layout_weight="1"/>
         </LinearLayout>
@@ -250,9 +163,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:backgroundTint="#FF0000"
+            android:backgroundTint="@color/skyblue6"
             android:text="메인으로"
-            android:textColor="@color/white"
+            android:textColor="@color/deepdarkgray"
             android:textStyle="bold"
             android:visibility="gone" />
 
@@ -261,22 +174,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:backgroundTint="#FF0000"
+            android:backgroundTint="@color/skyblue6"
             android:text="로그아웃"
-            android:textColor="@color/white"
+            android:textColor="@color/deepdarkgray"
             android:textStyle="bold"
             android:visibility="gone" />
-
-
 
         <Button
             android:id="@+id/googleLoginBtn1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:backgroundTint="#FF0000"
+            android:backgroundTint="@color/skyblue6"
             android:text="구글인증"
-            android:textColor="@color/white"
+            android:textColor="@color/deepdarkgray"
             android:textStyle="bold"
             android:visibility="gone" />
 

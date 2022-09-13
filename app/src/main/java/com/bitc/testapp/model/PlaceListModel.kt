@@ -1,5 +1,6 @@
 package com.bitc.testapp.model
 
 data class PlaceListModel(
-    var places: MutableList<PlaceModel>
+    var places: List<PlaceModel>
+//    var places: MutableList<PlaceModel>
 )

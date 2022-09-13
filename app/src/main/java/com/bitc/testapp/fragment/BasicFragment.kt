@@ -6,14 +6,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bitc.testapp.R
 import com.bitc.testapp.TestApplication
 import com.bitc.testapp.adapter.PlaceAdapter
+import com.bitc.testapp.adapter.PlacesAdapter
+import com.bitc.testapp.adapter.SearchAdapter
 import com.bitc.testapp.databinding.FragmentBasicBinding
 import com.bitc.testapp.model.PlaceListModel
-import com.bitc.testapp.model.UserListModel
+import com.bitc.testapp.model.PlaceModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -26,14 +29,15 @@ class BasicFragment : Fragment() {
     ): View? {
         val binding = FragmentBasicBinding.inflate(inflater, container, false)
 
-        val call: Call<PlaceListModel> = TestApplication.networkService.getPlacesByPurpose("걷기")
+        val call: Call<PlaceListModel> = TestApplication.networkService.getPlaces()
         call.enqueue(object : Callback<PlaceListModel>{
             override fun onResponse(
                 call: Call<PlaceListModel>,
                 response: Response<PlaceListModel>
             ) {
                 binding.recyclerView.layoutManager = LinearLayoutManager(activity)
-                var adapter = PlaceAdapter(activity as Context, response.body()?.places)
+                var adapter = PlacesAdapter(response.body()?.places as ArrayList<PlaceModel>)
+//                var adapter = SearchAdapter(activity as Context, response.body()?.places)
                 binding.recyclerView.adapter = adapter
             }
 
@@ -41,56 +45,6 @@ class BasicFragment : Fragment() {
                 call.cancel()
             }
         })
-
-
-//        val networkService = TestApplication.networkService
-//        val placeListModelCall = networkService.getPlaces()
-//        placeListModelCall.enqueue(object : Callback<PlaceListModel>{
-//            override fun onResponse(
-//                call: Call<PlaceListModel>,
-//                response: Response<PlaceListModel>
-//            ) {
-//                if(response.isSuccessful){
-//                    binding.recyclerView.layoutManager = LinearLayoutManager(activity)
-//                    var adapter = PlaceAdapter(activity as Context, response.body()?.places)
-//                    binding.recyclerView.adapter = adapter
-//                    binding.recyclerView.addItemDecoration(DividerItemDecoration(activity, LinearLayoutManager.VERTICAL))
-//
-//                }
-//            }
-//
-//            override fun onFailure(call: Call<PlaceListModel>, t: Throwable) {
-//                call.cancel()
-//            }
-//
-//        })
-
         return binding.root
     }
-
-//    override fun onStart() {
-//        super.onStart()
-//        val binding = FragmentBasicBinding.inflate(layoutInflater)
-//        var purpose: String? = this.arguments?.get("purpose").toString()
-//        val networkService = TestApplication.networkService
-//        val placeListModelCall = networkService.getPlaces(purpose)
-//        placeListModelCall.enqueue(object : Callback<PlaceListModel>{
-//            override fun onResponse(
-//                call: Call<PlaceListModel>,
-//                response: Response<PlaceListModel>
-//            ) {
-//                if(response.isSuccessful){
-//                    binding.recyclerView.layoutManager = LinearLayoutManager(activity)
-//                    var adapter = PlaceAdapter(activity as Context, response.body()?.places)
-//                    binding.recyclerView.adapter = adapter
-//
-//                }
-//            }
-//
-//            override fun onFailure(call: Call<PlaceListModel>, t: Throwable) {
-//                call.cancel()
-//            }
-//
-//        })
-//    }
 }
